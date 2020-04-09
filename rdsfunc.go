@@ -29,21 +29,19 @@ func getrds(filter string) {
 				//tags := make(map[string]string)
 				fmt.Println(color.Bold(aws.StringValue(v.DBInstanceIdentifier)))
 
-				/*
-					t := listTagsForResource(v.DBInstanceArn)
-						if len(t.ListTagsForResourceOutput.TagList) != 0 {
-							//fmt.Printf("[")
-							for _, v2 := range t.ListTagsForResourceOutput.TagList {
-								//tags[aws.StringValue(v2.Key)] = aws.StringValue(v2.Value)
-								fmt.Printf(`"` + aws.StringValue(v2.Key) + `"`)
-								fmt.Printf(`:`)
-								fmt.Printf(`"` + aws.StringValue(v2.Value) + `"`)
-								fmt.Println()
-							}
-							//fmt.Printf("]")
-						}
-						//fmt.Println(tags)
-				*/
+				t := listTagsForResource(v.DBInstanceArn)
+				if len(t.ListTagsForResourceOutput.TagList) != 0 {
+					//fmt.Printf("[")
+					for _, v2 := range t.ListTagsForResourceOutput.TagList {
+						//tags[aws.StringValue(v2.Key)] = aws.StringValue(v2.Value)
+						fmt.Printf(`"` + aws.StringValue(v2.Key) + `"`)
+						fmt.Printf(`:`)
+						fmt.Printf(`"` + aws.StringValue(v2.Value) + `"`)
+						fmt.Println()
+					}
+					//fmt.Printf("]")
+				}
+				//fmt.Println(tags)
 			}
 		}
 	}
